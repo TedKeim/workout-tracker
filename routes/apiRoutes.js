@@ -9,5 +9,15 @@ router.get("/api/workouts", (req, res) => {
             workout.exercises.forEach(e => {
                 total += e.duration;
             });
-            workout.totalDuration = total;
+            workout.totalDuration = total;   
         });
+
+        res.json(dbWorkout);
+    }).catch(err => {
+        res.json(err);
+
+    });
+
+    router.post("/api/workouts", ({ body }, res) => {
+        // console.log("WORKOUT TO BE ADDED");
+        // console.log(body);
